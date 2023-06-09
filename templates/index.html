@@ -2,16 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ name }}'s Watchlist</title>
+    <title>{{ user.name }}'s Watchlist</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
 </head>
 <body>
-    <h2>{{ name }}'s Watchlist</h2>
+    <h2>
+        <img  alt="Avatar" class="avatar" src="{{ url_for('static', filename='/images/avatar.jpg') }}">
+        {{ user.name }}'s Watchlist
+    </h2>
     <p>{{ movies|length }} Titles</p>
-    <ul>
+    <ul class="movie-list">
         {% for movie in movies %}
         <li>{{ movie.title }} - {{ movie.year }}</li>
         {% endfor %}
     </ul>
+    <img  alt="Walking Air" class="air" src="{{ url_for('static', filename='/images/air.gif') }}">
     <footer>
         <small>&copy; 2023 <a href="https://github.com/TheParzivaal/watchlist">Watchlist</a></small>
     </footer>
