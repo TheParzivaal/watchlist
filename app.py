@@ -44,7 +44,7 @@ def initdb(drop):
     if drop:
         db.drop_all()
     db.create_all()
-    click.echo("Initialized Database.")
+    click.echo("Initialized database.")
 
 
 @app.cli.command()
@@ -148,7 +148,7 @@ def settings():
 
         current_user.name = name
         db.session.commit()
-        flash('Setting updated.')
+        flash('Settings updated.')
         return redirect(url_for('index'))
 
     return render_template('settings.html')
@@ -195,7 +195,7 @@ def edit(movie_id):
 
         if (not title) or (not year) or (len(year) > 4) or (len(title) > 60):
             flash('Invalid input.')
-            return redirect(url_for('edit'), movie_id=movie_id)
+            return redirect(url_for('edit', movie_id=movie_id))
 
         movie.title = title
         movie.year = year
